@@ -5,7 +5,7 @@ const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
 const cors = require('cors');
-app.use(cors());
+app.use(cors({origin: 'https://chat-app-eight-delta.vercel.app/', maxAge: 86400, allowedHeaders: '*', methods: '*'}));
 
 io.on('connection', (socket) => {
   socket.on('message', (msg) => {
